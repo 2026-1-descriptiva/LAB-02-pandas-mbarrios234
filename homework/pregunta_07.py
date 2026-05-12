@@ -6,7 +6,7 @@ librerias de pandas para resolver las preguntas.
 """
 import pandas as pd
 
-tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+tbl0 = pd.read_csv("files/input/tbl0.tsv", sep="\t")
 
 
 def pregunta_07():
@@ -23,6 +23,5 @@ def pregunta_07():
     E    67
     Name: c2, dtype: int64
     """
-    suma = tbl0[['_c1', '_c2']].groupby(['_c1']).sum()
-    R7 = suma.squeeze()
+    R7= tbl0.groupby('c1')['c2'].sum()
     return R7

@@ -6,7 +6,7 @@ librerias de pandas para resolver las preguntas.
 """
 import pandas as pd
 
-tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
+tbl1 = pd.read_csv("files/input/tbl1.tsv", sep="\t")
 
 def pregunta_06():
     """
@@ -17,6 +17,7 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    letras = tbl1['_c4'].unique()
-    R6 = sorted(map(lambda x: x.upper(), letras))
+    columna_mayuscula = tbl1['c4'].str.upper()
+    valores_unicos = columna_mayuscula.unique()
+    R6=sorted(valores_unicos)
     return R6

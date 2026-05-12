@@ -6,7 +6,7 @@ librerias de pandas para resolver las preguntas.
 """
 import pandas as pd
 
-tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+tbl0 = pd.read_csv("files/input/tbl0.tsv", sep="\t")
 
 def pregunta_09():
     """
@@ -25,8 +25,6 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
-    c3 = tbl0['_c3'].tolist()
-    years = list(map(lambda x: x.split('-')[0], c3))
-    R9 = tbl0.copy()
-    R9['year'] = years
-    return R9
+    tbl0["year"] = tbl0["c3"].str[:4]
+    
+    return tbl0

@@ -7,7 +7,7 @@ librerias de pandas para resolver las preguntas.
 
 import pandas as pd
 
-tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
+tbl2 = pd.read_csv("files/input/tbl2.tsv", sep="\t")
 
 def pregunta_12():
     """
@@ -25,11 +25,7 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    tabla = tbl2.copy()
-    tabla['_c5'] = tabla['_c5a'] + ':' + tabla['_c5b'].astype(str)
-    R12 = tabla.groupby('_c0').agg({'_c5': lambda var: sorted(var)})
-    for ind, fil in R12.iterrows():
-        fil['_c5'] = ",".join([str(num) for num in fil['_c5']])
-    R12.insert(0, '_c0', range(0, 40))
+    tbl2["c5"] = tbl2.apply(lambda row: f"{row['c5a']}:{row['c5b']}", axis=1)
+    tbl2_grouped = tbl2.groupby("c0")["c5"].apply(lambda x: ','.join(map(str, sorted(x)))).reset_index()
     
-    return R12
+    return tbl2_grouped

@@ -6,7 +6,7 @@ librerias de pandas para resolver las preguntas.
 """
 import pandas as pd
 
-tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+tbl0 = pd.read_csv("files/input/tbl0.tsv", sep="\t")
 
 def pregunta_08():
     """
@@ -24,7 +24,6 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    R8 = tbl0.copy()
-    R8['suma'] = R8._c0 + R8._c2
+    tbl0["suma"] = tbl0["c0"] + tbl0["c2"]
     
-    return R8
+    return tbl0

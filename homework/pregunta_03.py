@@ -5,8 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
-import pandas as pd
-tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+
 
 def pregunta_03():
     """
@@ -23,7 +22,8 @@ def pregunta_03():
     Name: count, dtype: int64
 
     """
-
-    R3 = tbl0['_c1'].value_counts().sort_index()
+    import pandas as pd
+    tbl0 = pd.read_csv("files/input/tbl0.tsv", sep="\t")
+    R3= tbl0.groupby("c1").size()
     return R3
 
