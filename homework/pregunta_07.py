@@ -4,6 +4,9 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
+import pandas as pd
+
+tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 
 
 def pregunta_07():
@@ -20,3 +23,6 @@ def pregunta_07():
     E    67
     Name: c2, dtype: int64
     """
+    suma = tbl0[['_c1', '_c2']].groupby(['_c1']).sum()
+    R7 = suma.squeeze()
+    return R7

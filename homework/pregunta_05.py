@@ -5,6 +5,10 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+
+tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+
 
 def pregunta_05():
     """
@@ -20,3 +24,6 @@ def pregunta_05():
     E    9
     Name: c2, dtype: int64
     """
+    maximo = tbl0[['_c1', '_c2']].groupby(['_c1']).max()
+    R5 = maximo.squeeze()
+    return R5

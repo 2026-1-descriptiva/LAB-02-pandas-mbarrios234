@@ -5,6 +5,9 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+
+tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 
 def pregunta_11():
     """
@@ -22,3 +25,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+    R11 = tbl1.copy()
+    R11 = R11.groupby('_c0').agg({'_c4': lambda var: sorted(list(var))})
+    for ind, fil in R11.iterrows():
+        fil['_c4'] = ",".join([str(num) for num in fil['_c4']])
+    R11.insert(0, '_c0', range(0, 40))
+    return R11
